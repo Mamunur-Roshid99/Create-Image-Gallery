@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strngth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black">
+    
+    <div class="mt-32 ml-24">
+        <div class="input-box relative w-[500px] border-2 border-gray-500 flex items-center justify-between">
+            <input type="password" id="password" placeholder="Password" class="w-[500px] h-16 p-2 bg-transparent text-white">
+            <button class="absolute right-0 p-2"><img src="images/arrow.png" width="30px"></button>
+        </div>
+    <p id="message" class="hidden text-white text-sm mt-1">Password is <span id="strength"></span></p>
+    </div>
+
+
+    <script>
+
+        var pass = document.querySelector("#password");
+        var msg = document.querySelector("#message");
+        var str = document.querySelector("#strength");
+
+        pass.addEventListener("input", ()=> {
+            if (pass.value.length > 0) {
+                msg.style.display = "block";
+            }else {
+                msg.style.display = "none";
+            }
+            if (pass.value.length < 4) {
+                str.innerHTML = "weak";
+                msg.style.color = "#ff5925";
+            }else if (pass.value.length >= 4 && pass.value.length < 8 ) {
+                str.innerHTML = "medium";
+                msg.style.color = "yellow";
+            }else if (pass.value.length >= 8) {
+                str.innerHTML = "strong";
+                msg.style.color = "#26d730";
+            }
+        })
+
+    </script>
+
+</body>
+</html>
